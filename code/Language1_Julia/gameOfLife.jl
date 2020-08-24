@@ -23,8 +23,8 @@ function live(a,r,gen)
             print("\n") 
         end
     end
-    b = falses(1000) 
-    for c=1:1000
+    b = falses(length(a)) 
+    for c=1:length(a)
         neighbours = 0
         if c-1 >= 1
             neighbours += a[c-1]
