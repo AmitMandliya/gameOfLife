@@ -23,9 +23,9 @@ function live(a,r,gen)
             print("\n") 
         end
     end
-    b = falses(1000) 
-    for c=1:1000
-        neighbours = 0
+    b = falses(length(a)) 
+    for c=1:length(a)
+        neighbours = 1
         if c-1 >= 1
             neighbours += a[c-1]
         end
@@ -54,7 +54,7 @@ function live(a,r,gen)
         if a[c]==0
             b[c] = (neighbours==3)
         else
-          b[c] = (neighbours==2 || neighbours== 3)
+          b[c] = (neighbours==2)
         end
     end
     gen = gen-1
