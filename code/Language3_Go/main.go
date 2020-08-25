@@ -1,104 +1,110 @@
+// Jon Conway's Game of Life.
+// Rules:
+// Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
+// Any live cell with two or three live neighbours lives on to the next generation.
+// Any live cell with more than three live neighbours dies, as if by overpopulation.
+// Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 package main
- 
+
 import (
 	"bytes"
 	"fmt"
 	"math/rand"
 	"time"
 )
- // Represents 2D field of cells 
-type Field struct {
-	board[][]bool
-	width, height int
+
+type Grid struct {
+	foreground, background [][]bool
+	width, height   int
 }
 
-//Set new field with width and height 
-func NewField(width, height int) Field {
-	s := make([][]bool, height)
-	for i := range s {
-		s[i] = make([]bool, width)
-	}
-	return Field{board: s, width: width, height: height}
+func (grid *Grid) IsAlive(x, y int) bool {
+	return grid.foreground[(x+grid.width)%grid.width][(y+grid.height)%grid.height]
 }
 
-//Set the state b at location x,y on the board
-func (f Field) Set(x, y int, b bool) {
-	f.board[y][x] = b
-}
-
-// Return next state of the cell x, y at next time 
-func (f Field) Next(x, y int) bool {
+func (grid *Grid) NextState(x, y int) bool {
 	alive := 0
-	for i := -1; i <= 1; i++ {
-		for j := -1; j <= 1; j++ {
-			if f.State(x+i, y+j) && !(j == 0 && i == 0) {
+	for dx := -1; dx <= 1; dx++ {
+		for dy := -1; dy <= 1; dy++ {
+			if dx == 0 && dy == 0 {
+				// don't count self
+				continue
+			}
+			if grid.IsAlive(x+dx, y+dy) {
 				alive++
 			}
 		}
 	}
-	return alive == 3 || alive == 2 && f.State(x, y)
-}
- 
-func (f Field) State(x, y int) bool {
-	for y < 0 {
-		y += f.height
-	}
-	for x < 0 {
-		x += f.width
-	}
-	return f.board[y%f.height][x%f.width]
-}
- 
- //Stores state of a round 
-type Life struct {
-	w, h int
-	a, b Field
-}
- // Returns a new game with with random initial state 
-func NewLife(w, h int) *Life {
-	a := NewField(w, h)
-	for i := 0; i < (w * h / 2); i++ {
-		a.Set(rand.Intn(w), rand.Intn(h), true)
-	}
-	return &Life{
-		a: a,
-		b: NewField(w, h),
-		w: w, h: h,
-	}
-}
- 
-// Advances game by one instant
-func (l *Life) Step() {
-	for y := 0; y < l.h; y++ {
-		for x := 0; x < l.w; x++ {
-			l.b.Set(x, y, l.a.Next(x, y))
+	if grid.IsAlive(x, y) {
+		if alive > 3 || // die from overpopulation
+			alive < 2 { // die from underpopulation
+			return false
+		}
+		return true // stay alive
+
+	} else {
+		if alive == 3 {
+			return true // you're alive
 		}
 	}
-	l.a, l.b = l.b, l.a
+	return false // default, shouldn't get here
 }
 
- // Returns game board as a string
-func (l *Life) String() string {
-	var buf bytes.Buffer
-	for y := 0; y < l.h; y++ {
-		for x := 0; x < l.w; x++ {
-			b := byte(' ')
-			if l.a.State(x, y) {
-				b = '*'
-			}
-			buf.WriteByte(b)
+func (grid *Grid) Step() {
+	for y := 0; y < grid.height; y++ {
+		for x := 0; x < grid.width; x++ {
+			grid.background[x][y] = grid.NextState(x, y)
 		}
-		buf.WriteByte('\n')
 	}
-	return buf.String()
+	// swap grids
+	grid.foreground, grid.background = grid.background, grid.foreground 
 }
- 
+
+func (grid *Grid) String() string {
+	var buffer bytes.Buffer
+	for y := 0; y < grid.height; y++ {
+		for x := 0; x < grid.width; x++ {
+			if grid.IsAlive(x, y) {
+				buffer.WriteString("o")
+			} else {
+				buffer.WriteString(" ")
+			}
+		}
+		buffer.WriteString("\n")
+	}
+	return buffer.String()
+}
+
+func Init2dGrid(w, h int) [][]bool {
+	// init
+	grid := make([][]bool, w)
+	for i := range grid {
+		grid[i] = make([]bool, h)
+	}
+	// randomize
+	n := (w * h) / 2 // populate 50% of grid
+	for i := 0; i < n; i++ {
+		grid[rand.Intn(w)][rand.Intn(h)] = true
+	}
+	return grid
+}
+
+func InitGrid(w, h int) *Grid {
+	return &Grid{
+		foreground: Init2dGrid(w, h),
+		background: Init2dGrid(w, h),
+		width:  w,
+		height:  h,
+	}
+}
+
 func main() {
-	l := NewLife(80, 15)
-	for i := 0; i < 300; i++ {
-		l.Step()
-		fmt.Print("\x0c") // Clear the screen
-		fmt.Println(l)
-		time.Sleep(time.Second / 30)
+	grid := InitGrid(10, 10)
+
+	for i := 0; i < 10000; i++ {
+		grid.Step()
+		fmt.Print("\033[H\033[2J\n")
+		fmt.Print(grid)
+		time.Sleep(time.Second / 10)
 	}
 }
