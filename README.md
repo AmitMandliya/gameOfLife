@@ -17,6 +17,7 @@ Due 8/24
 2. Below are the online code compiler urls which already have the buggy version of the code present. Participants can simply click on the url below and make changes to the code. Clicking on "Run" would compile and run the code immediately on the right side console:<br>
 Buggy code in Language Julia: https://repl.it/@AmitMandliya1/buggyGameOfLife#main.jl <br>
 Buggy code in Language Kotlin: https://repl.it/@himol7/gameOfLife#main.kt <br>
+Buggy code in Language Go: https://repl.it/@KrisshaJ/gameOfLife#main.go <br>
 The participants will also have access to our github repository url, in case if they wish to run the code locally.
 3. Once, the participant manage to find the bugs and Run the program correctly, one of our team member would inform him and note the time taken.
 4. The participant will then proceed to fill up a 5-question form about his debugging experience: https://forms.gle/bU4UvE1Kmfpuojoy7
