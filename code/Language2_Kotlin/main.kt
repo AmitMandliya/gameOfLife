@@ -13,13 +13,14 @@ class Field(val w: Int, val h: Int)
     fun next(x: Int, y: Int): Boolean 
     {
         var on = 0
-        for (i in -1..1) {
-            for (j in -1..1) 
+        for (i in 0..1) 
+        {
+            for (j in 0..1) 
             {
                 if (state(x + i, y + j) && !(j == 0 && i == 0)) on++
             }
         }
-        return on == 3 || (on == 2 && state(x, y))
+        return on == 2 || (on == 3 && state(x, y))
     }
  
     fun state(x: Int, y: Int): Boolean 
@@ -69,7 +70,7 @@ class gameOfLife()
         {
             for (x in 0 until w) 
             {
-                val c = if (a.state(x, y)) '#' else '.'
+                val c = if (a.state(x, y)) '.' else '.'
                 sb.append(c)
             }
             sb.append('\n')
