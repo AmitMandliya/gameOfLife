@@ -37,7 +37,7 @@ func (grid *Grid) NextState(x, y int) bool {
 	}
 	if grid.IsAlive(x, y) {
 		if alive > 3 || // die from overpopulation
-			alive < 2 { // die from underpopulation
+			alive <= 2 { // die from underpopulation
 			return false
 		}
 		return true // stay alive
@@ -51,8 +51,8 @@ func (grid *Grid) NextState(x, y int) bool {
 }
 
 func (grid *Grid) Step() {
-	for y := 0; y < grid.height; y++ {
-		for x := 0; x < grid.width; x++ {
+	for y := 0; y < grid.height ; y++ {
+		for x := 0; x < grid.width ; x++ {
 			grid.background[x][y] = grid.NextState(x, y)
 		}
 	}
@@ -63,7 +63,7 @@ func (grid *Grid) Step() {
 func (grid *Grid) String() string {
 	var buffer bytes.Buffer
 	for y := 0; y < grid.height; y++ {
-		for x := 0; x < grid.width; x++ {
+		for x := 0; x <= grid.width; x++ {
 			if grid.IsAlive(x, y) {
 				buffer.WriteString("o")
 			} else {
@@ -104,7 +104,7 @@ func main() {
 	for i := 0; i < 10000; i++ {
 		grid.Step()
 		fmt.Print("\033[H\033[2J\n")
-		fmt.Print(grid)
 		time.Sleep(time.Second / 10)
+    
 	}
 }
