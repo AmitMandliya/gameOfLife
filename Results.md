@@ -4,10 +4,12 @@ To identify the simplicity of all the languages (Go, Kotlin and Julia), we condu
 We split ourselves into groups of two and conducted the debugging session for each of the testers. One person from the group was actively involved with the tester as he navigated through the code and the other person at the same time noted the performance metrics in a Google Sheet. This helped in critical measurement of the activity. <br> 
 Our study with the participants in a limited time frame needed us to get everything related to set up done quickly. We decided to use the feature of repl.it where the participants just have to click a link and the buggy code will be ready for with a terminal on the right hand side of the screen. <br>
 We asked the participants to share their screen while they find the bugs and noted down below stuff for each one of them:
-<br>Number of time the code was executed <br>
-<br>Number of time it took for them to find the first bug <br>
-<br>Number of google searches they had to make. <br>
-At the end of each interview, we asked the participants to fill out a Google Doc form which asked them about the familiarity of the language and certain other questions described in further sections. <br>
+- Number of time the code was executed <br>
+- Number of time it took for them to find the first bug <br>
+- Number of google searches they had to make. <br>
+
+At the end of each interview, we asked the participants to fill out a Google Doc form which asked them about the familiarity of the language and certain other questions described in further sections. <br>  
+
 After all the interviews were over, we did an analysis of the results to come up with the best of all the three languages. <br>
 
 
