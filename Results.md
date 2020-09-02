@@ -12,6 +12,24 @@ After all the interviews were over, we did an analysis of the results to come up
 
 ### Materials
 
+1. Google Form
+
+The Google form was created to record testers’ responses. Each tester was asked to fill it up after the completion of their debugging session. The form questioned the testers about the following:
+-Level of familiarity with individual languages
+-Level of difficulty in finding the bugs
+-Their approach towards debugging for each language they chose
+-How obvious were the bugs to them?
+
+The responses to these questions helped us better analyze the general obscurity of the languages, and also understand how hard was it to find the bugs that we introduced.
+
+2. Google Sheet
+
+The Google sheet was created to record certain performance metrics of testers during their debugging sessions. We recorded the following metrics:
+-The Time(minutes) taken by tester to debug the first bug: It gave us an idea about how much time does it take for a tester to get familiar enough with a language to debug a bug.
+-Number of execution runs of the code: This metric helped us infer how hard it was to spot all the bugs in the code for the tester.
+-Number of Google Searches: This metric helped us get a clearer idea about tester’s familiarity with the language.
+
+
 ### Observations
 
 ### Inferences
