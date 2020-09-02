@@ -13,9 +13,6 @@ After all the interviews were over, we did an analysis of the results to come up
 
 ## Materials
 
-
-## Observations
-
 1. Google Form
 
 The Google form was created to record testers’ responses. Each tester was asked to fill it up after the completion of their debugging session. The form questioned the testers about the following:
@@ -34,14 +31,17 @@ The Google sheet was created to record certain performance metrics of testers du
 - Number of Google Searches: This metric helped us get a clearer idea about tester’s familiarity with the language.
 
 
-### Inferences  
+## Observations
 
-Based on the testers' survey reponses, we have come to following inferences
+Based on the testers' survey reponses and first hand data collected, we have come to following inferences
 - Julia came across as the least preferred language whereas Kotlin was the preferred choice of language for Game Of Life
-- More than half of the testers were not familiar to the language
+- Although more than half of the testers were not familiar to the language, average time to find the first bug was least in Julia (5.71s) followed by Go.
+- Kotlin required more time to find the first bug but it had least amount of executions that the participants did to resolve all the bugs.
 - The bugs that were introduced in the code weren't obvious and the the participants rated it moderate on level of difficulty
 - Many of the participants referred to life.awk as a reference for debugging the code
 - Not understanding syntax was one of the major hurdles that were faced by them
+
+These inferences are taken from data analysis done here. //Add the ipynb file here
 
 ### Conclusions
 The testers' responses as well as our observations during each of the testing session have brought us to a conclusion that two person per participant is the most effective way for quality measurement of the activity and proper planning of the activity is crucial for acurate measurements. 
