@@ -1,4 +1,13 @@
-Methods
+*Methods:*
+To identify the easier of all the languages (Go, Kotlin and Julia),,we conducted face to face interviews with 10 participants. We coded Game of life in all the three languages and introduced multiple bugs in each language. These were the logical bugs so that a participant who is new to the language does not have to search for syntax in a limited time period of interviews.
+Our study with the participants in a limited time frame needed us to get everything related to set up done quickly. We decided to use the feature of repl.it where the participants just have to click a link and the buggy code will be ready for with a terminal on the right hand side of the screen. 
+We asked the participants to share their screen while they find the bugs and noted down below stuff for each one of them:
+Number of time the code was executed
+Number of time it took for them to find the first bug
+Number of google searches they had to make.
+At the end of each interview, we asked the participants to fill out a Google Doc form which asked them about the familiarity of the language and certain other questions described in further sections.
+After all the interviews were over, we did an analysis of the results to come up with the best of all the three languages.
+
 
 Materials
 
