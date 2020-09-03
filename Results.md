@@ -1,5 +1,5 @@
 # Results from the debugging session
-## Methods
+## Methodology
 
 To identify the simplicity of all the languages (Go, Kotlin and Julia), we conducted face to face interviews with 10 participants. We coded Game of life in all the three languages and introduced multiple bugs in each language. These were the logical bugs so that a participant who is new to the language does not have to search for syntax in a limited time period of interviews (30 min). <br>
 We split ourselves into groups of two and conducted the debugging session for each of the testers. One person from the group was actively involved with the tester as he navigated through the code and the other person at the same time noted the performance metrics in a Google Sheet. This helped in critical measurement of the activity. <br> 
