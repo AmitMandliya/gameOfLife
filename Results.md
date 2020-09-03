@@ -43,7 +43,7 @@ Based on the testers' survey reponses and first hand data collected, we have com
 - Many of the participants referred to life.awk as a reference for debugging the code
 - Not understanding syntax was one of the major hurdles that were faced by them
 
-**Data Analysis done can be found [here]**(Analysis_Of_Responses.ipynb). 
+**[Data Analysis done can be found here](Analysis_Of_Responses.ipynb)**. 
 
 ### Conclusions
 The testers' responses as well as our observations during each of the testing session have brought us to a conclusion that two person per participant is the most effective way for quality measurement of the activity and proper planning of the activity is crucial for acurate measurements. 
